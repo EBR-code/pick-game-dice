@@ -20,7 +20,7 @@ const newGame = function () {
   scores = [0, 0];
   currentScore = 0;
   activePlayer = 0;
-  scoreLimit = 20;
+  scoreLimit = 100;
   playing = true;
 
   score0Element.textContent = 0;
