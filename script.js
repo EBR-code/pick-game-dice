@@ -13,17 +13,31 @@ const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
-// Starting conditions
-score0Element.textContent = 0;
-score1Element.textContent = 0;
-diceElement.classList.add('hidden');
+let scores, currentScore, activePlayer, scoreLimit, playing;
 
-// Starting variables
-const scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
-let scoreLimit = 20;
-let playing = true;
+const newGame = function () {
+  // Initial  variables
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  scoreLimit = 20;
+  playing = true;
+
+  score0Element.textContent = 0;
+  score1Element.textContent = 0;
+  current0Element.textContent = 0;
+  current1Element.textContent = 0;
+  diceElement.classList.add('hidden');
+
+  player0Element.classList.remove('player--winner');
+  player1Element.classList.remove('player--winner');
+  player0Element.classList.add('player--active');
+  player1Element.classList.remove('player--active');
+};
+
+newGame();
+
+// Game Logic
 
 const switchPlayer = function () {
   // Switch to the next player using a ternary function.
@@ -80,3 +94,6 @@ btnHold.addEventListener('click', function () {
     }
   }
 });
+
+// Resets game upon "NEW GAME" button click
+btnNew.addEventListener('click', newGame);
